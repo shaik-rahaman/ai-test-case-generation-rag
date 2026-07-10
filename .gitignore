@@ -47,3 +47,6 @@ client/dist/
 
 # Runtime
 *.pid
+
+# Playwright MCP artifacts
+.playwright-mcp/
