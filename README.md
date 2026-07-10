@@ -9,7 +9,6 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248)](https://www.mongodb.com/atlas)
 [![RAG](https://img.shields.io/badge/RAG-Retrieval%20Augmented%20Generation-8A2BE2)](https://en.wikipedia.org/wiki/Retrieval-augmented_generation)
 [![LLM](https://img.shields.io/badge/LLM-Groq%20%2B%20Mistral-FF6B6B)](https://groq.com/)
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > **Enterprise AI platform that transforms natural language business requirements into high-quality software test cases using Retrieval-Augmented Generation (RAG), Hybrid Search, Semantic Retrieval, and Large Language Models (LLMs).**
 
