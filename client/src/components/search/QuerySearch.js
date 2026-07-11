@@ -34,7 +34,7 @@ import {
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:3005/api';
+const API_BASE = '/api';
 
 function QuerySearch() {
   const [query, setQuery] = useState('Share Diagnostic Reports with Patients via WhatsApp');

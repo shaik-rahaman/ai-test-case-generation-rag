@@ -419,7 +419,7 @@ function PromptSchemaManager() {
       console.log('🎨 Building Prompt Template');
       
       // Fetch the latest test case ID from database
-      const latestIdResponse = await fetch('http://localhost:3005/api/testcases/latest-id');
+      const latestIdResponse = await fetch('/api/testcases/latest-id');
         const latestIdData = await latestIdResponse.json();
         nextTestCaseId = latestIdData.nextTestCaseId || 'TC_PE_001';
         console.log(`   Next ID: ${nextTestCaseId}`);
@@ -469,7 +469,7 @@ ${testQuery}
 
       // STEP 3: LLM Generation (Prompt Engineering API)
       console.log('🤖 STEP 3: LLM Generation via Prompt Engineering');
-      const generateResponse = await fetch('http://localhost:3005/api/test-prompt', {
+      const generateResponse = await fetch('/api/test-prompt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -684,7 +684,7 @@ ${testQuery}
       // STEP 2: Query Preprocessing (Normalize → Abbreviations → Synonyms)
       console.log('🔧 STEP 2: Query Preprocessing (Normalize → Abbreviations → Synonyms)');
       setGenerationProgress(10);
-      const preprocessResponse = await fetch('http://localhost:3005/api/search/preprocess', {
+      const preprocessResponse = await fetch('/api/search/preprocess', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -714,7 +714,7 @@ ${testQuery}
       // STEP 3: Hybrid Search (BM25 + Vector, weighted fusion)
       console.log('🔍 STEP 3: Hybrid Search (BM25 + Vector with weighted fusion)');
       setGenerationProgress(20);
-      const searchResponse = await fetch('http://localhost:3005/api/search/hybrid', {
+      const searchResponse = await fetch('/api/search/hybrid', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -735,7 +735,7 @@ ${testQuery}
       // STEP 4: RRF Re-Ranking (Cross-encoder scores, top 10 selected)
       console.log('🎯 STEP 4: RRF Re-Ranking with cross-encoder scores');
       setGenerationProgress(35);
-      const rerankResponse = await fetch('http://localhost:3005/api/search/rerank', {
+      const rerankResponse = await fetch('/api/search/rerank', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -775,7 +775,7 @@ ${testQuery}
           return rest;
         });
         
-        const dedupResponse = await fetch('http://localhost:3005/api/search/deduplicate', {
+        const dedupResponse = await fetch('/api/search/deduplicate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -825,7 +825,7 @@ ${testQuery}
         return rest;
       });
       
-      const summarizeResponse = await fetch('http://localhost:3005/api/search/summarize', {
+      const summarizeResponse = await fetch('/api/search/summarize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -847,7 +847,7 @@ ${testQuery}
       setGenerationProgress(65);
       
       // Fetch the latest test case ID from database
-      const latestIdResponse = await fetch('http://localhost:3005/api/testcases/latest-id');
+      const latestIdResponse = await fetch('/api/testcases/latest-id');
       let nextTestCaseId = 'TC_NEW_001';
       
       if (latestIdResponse.ok) {
@@ -918,7 +918,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
       // STEP 8: LLM Generation (Enterprise Embedding Service - Generate test case JSON)
       console.log('🤖 STEP 8: LLM Generation via Enterprise Embedding Service');
       setGenerationProgress(75);
-      const generateResponse = await fetch('http://localhost:3005/api/test-prompt', {
+      const generateResponse = await fetch('/api/test-prompt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

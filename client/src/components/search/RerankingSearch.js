@@ -39,7 +39,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import MergeTypeIcon from '@mui/icons-material/MergeType';
 import { useSnackbar } from 'notistack';
 
-const API_BASE = 'http://localhost:3005/api';
+const API_BASE = '/api';
 
 function RerankingSearch() {
   const [query, setQuery] = useState('Share Diagnostic Reports with Patients via WhatsApp');

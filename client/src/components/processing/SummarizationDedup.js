@@ -71,10 +71,10 @@ function SummarizationDedup() {
 
     try {
       const endpoint = searchType === 'vector' 
-        ? 'http://localhost:3005/api/search'
+        ? '/api/search'
         : searchType === 'bm25'
-        ? 'http://localhost:3005/api/search/bm25'
-        : 'http://localhost:3005/api/search/hybrid';
+        ? '/api/search/bm25'
+        : '/api/search/hybrid';
 
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -108,7 +108,7 @@ function SummarizationDedup() {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3005/api/search/deduplicate', {
+      const response = await fetch('/api/search/deduplicate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -145,7 +145,7 @@ function SummarizationDedup() {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3005/api/search/summarize', {
+      const response = await fetch('/api/search/summarize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

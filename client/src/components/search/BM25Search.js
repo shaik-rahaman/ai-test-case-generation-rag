@@ -26,7 +26,7 @@ import SpeedIcon from '@mui/icons-material/Speed';
 import ArticleIcon from '@mui/icons-material/Article';
 import { useSnackbar } from 'notistack';
 
-const API_BASE = 'http://localhost:3005/api';
+const API_BASE = '/api';
 
 function BM25Search() {
   const [query, setQuery] = useState('Share Diagnostic Reports with Patients via WhatsApp');

@@ -75,7 +75,7 @@ function QueryPreprocessing() {
     setSearchResults(null);
 
     try {
-      const response = await fetch('http://localhost:3005/api/search/preprocess', {
+      const response = await fetch('/api/search/preprocess', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -110,10 +110,10 @@ function QueryPreprocessing() {
 
     try {
       const endpoint = searchType === 'vector' 
-        ? 'http://localhost:3005/api/search'
+        ? '/api/search'
         : searchType === 'bm25'
-        ? 'http://localhost:3005/api/search/bm25'
-        : 'http://localhost:3005/api/search/hybrid';
+        ? '/api/search/bm25'
+        : '/api/search/hybrid';
 
       const response = await fetch(endpoint, {
         method: 'POST',
