@@ -44,6 +44,7 @@ import {
   Schema as SchemaIcon
 } from '@mui/icons-material';
 import { SnackbarProvider } from 'notistack';
+import { alpha } from '@mui/material/styles';
 
 // Import components
 import ConvertToJson from './components/data/ConvertToJson';
@@ -57,94 +58,175 @@ import SummarizationDedup from './components/processing/SummarizationDedup';
 import PromptSchemaManager from './components/processing/PromptSchemaManager';
 import Settings from './components/settings/Settings';
 
-// Enterprise color palette
-const createEnterpriseTheme = (mode) => createTheme({
-  palette: {
-    mode,
-    primary: {
-      main: '#0D47A1', // Deep blue
-      light: '#5472D3',
-      dark: '#002171',
-      contrastText: '#ffffff'
-    },
-    secondary: {
-      main: '#FF6F00', // Amber
-      light: '#FF9F40',
-      dark: '#C43E00',
-      contrastText: '#000000'
-    },
-    background: {
-      default: mode === 'light' ? '#F4F6F8' : '#121212',
-      paper: mode === 'light' ? '#FFFFFF' : '#1E1E1E'
-    },
-    text: {
-      primary: mode === 'light' ? '#1A1A1A' : '#FFFFFF',
-      secondary: mode === 'light' ? '#6B7280' : '#B0B0B0'
-    }
-  },
-  typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h4: {
-      fontWeight: 700,
-      fontSize: '2rem',
-      lineHeight: 1.2,
-      letterSpacing: '-0.02em'
-    },
-    h6: {
-      fontWeight: 600,
-      fontSize: '1.125rem',
-      lineHeight: 1.3
-    },
-    subtitle1: {
-      fontWeight: 500,
-      fontSize: '1rem',
-      lineHeight: 1.4
-    },
-    body1: {
-      fontSize: '0.875rem',
-      lineHeight: 1.5
-    },
-    body2: {
-      fontSize: '0.75rem',
-      lineHeight: 1.4
-    }
-  },
-  components: {
-    MuiDrawer: {
-      styleOverrides: {
-        paper: {
-          borderRight: 'none',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-        }
+// Enterprise AI color palette
+const createEnterpriseTheme = (mode) => {
+  const isLight = mode === 'light';
+
+  return createTheme({
+    palette: {
+      mode,
+      primary: {
+        main: '#4F46E5',
+        light: '#EEF2FF',
+        dark: '#4338CA',
+        contrastText: '#FFFFFF'
+      },
+      secondary: {
+        main: '#0F172A',
+        light: '#1E293B',
+        dark: '#020617',
+        contrastText: '#FFFFFF'
+      },
+      info: {
+        main: '#06B6D4',
+        light: '#E0F2FE',
+        contrastText: '#0F172A'
+      },
+      success: {
+        main: '#22C55E',
+        light: '#DCFCE7',
+        contrastText: '#052E16'
+      },
+      warning: {
+        main: '#F59E0B',
+        light: '#FEF3C7',
+        contrastText: '#451A03'
+      },
+      error: {
+        main: '#EF4444',
+        light: '#FEE2E2',
+        contrastText: '#7F1D1D'
+      },
+      background: {
+        default: isLight ? '#F8FAFC' : '#0F172A',
+        paper: isLight ? '#FFFFFF' : '#111827'
+      },
+      text: {
+        primary: isLight ? '#111827' : '#F8FAFC',
+        secondary: isLight ? '#64748B' : '#CBD5E1',
+        disabled: isLight ? '#94A3B8' : '#64748B'
+      },
+      divider: isLight ? '#E2E8F0' : '#334155',
+      action: {
+        hover: isLight ? '#F1F5F9' : '#1E293B',
+        selected: isLight ? '#EEF2FF' : '#312E81'
       }
     },
-    MuiListItemButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: '8px',
-          margin: '2px 8px',
-          '&.Mui-selected': {
-            borderLeft: '4px solid #FF6F00',
-            backgroundColor: 'rgba(13, 71, 161, 0.08)',
+    shape: {
+      borderRadius: 12
+    },
+    typography: {
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      h4: {
+        fontWeight: 700,
+        fontSize: '2rem',
+        lineHeight: 1.2,
+        letterSpacing: '-0.02em'
+      },
+      h6: {
+        fontWeight: 600,
+        fontSize: '1.125rem',
+        lineHeight: 1.3
+      },
+      subtitle1: {
+        fontWeight: 500,
+        fontSize: '1rem',
+        lineHeight: 1.4
+      },
+      body1: {
+        fontSize: '0.875rem',
+        lineHeight: 1.5
+      },
+      body2: {
+        fontSize: '0.75rem',
+        lineHeight: 1.4
+      }
+    },
+    components: {
+      MuiDrawer: {
+        styleOverrides: {
+          paper: ({ theme }) => ({
+            borderRight: '1px solid',
+            borderColor: theme.palette.divider,
+            boxShadow: `0 10px 30px ${alpha(theme.palette.secondary.main, 0.08)}`
+          })
+        }
+      },
+      MuiListItemButton: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderRadius: '10px',
+            margin: '2px 8px',
+            '&.Mui-selected': {
+              borderLeft: '4px solid',
+              borderColor: theme.palette.primary.main,
+              backgroundColor: theme.palette.action.selected,
+              '&:hover': {
+                backgroundColor: theme.palette.action.selected,
+              }
+            },
             '&:hover': {
-              backgroundColor: 'rgba(13, 71, 161, 0.12)',
+              backgroundColor: theme.palette.action.hover,
             }
-          },
-          '&:hover': {
-            backgroundColor: 'rgba(13, 71, 161, 0.04)',
-          }
+          })
         }
-      }
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+      },
+      MuiAppBar: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            boxShadow: `0 12px 30px ${alpha(theme.palette.secondary.main, 0.12)}`,
+            backgroundColor: theme.palette.secondary.main,
+            color: theme.palette.secondary.contrastText,
+            borderBottom: '1px solid',
+            borderColor: theme.palette.divider,
+          })
+        }
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderRadius: '12px',
+            border: '1px solid',
+            borderColor: theme.palette.divider,
+            boxShadow: `0 10px 24px ${alpha(theme.palette.secondary.main, 0.06)}`
+          })
+        }
+      },
+      MuiCard: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderRadius: '12px',
+            border: '1px solid',
+            borderColor: theme.palette.divider,
+            boxShadow: `0 10px 24px ${alpha(theme.palette.secondary.main, 0.06)}`
+          })
+        }
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            textTransform: 'none',
+            borderRadius: '10px',
+            fontWeight: 600,
+            boxShadow: 'none'
+          }),
+          containedPrimary: ({ theme }) => ({
+            boxShadow: `0 8px 18px ${alpha(theme.palette.primary.main, 0.18)}`
+          })
+        }
+      },
+      MuiAlert: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderRadius: '12px',
+            border: '1px solid',
+            borderColor: theme.palette.divider
+          })
         }
       }
     }
-  }
-});
+  });
+};
 
 const drawerWidth = 280;
 const collapsedDrawerWidth = 72;
@@ -320,7 +402,7 @@ function App() {
             </Toolbar>
 
             {/* Secondary Toolbar for Breadcrumbs */}
-            <Toolbar variant="dense" sx={{ bgcolor: 'primary.dark', minHeight: '48px !important' }}>
+            <Toolbar variant="dense" sx={{ bgcolor: 'primary.main', minHeight: '48px !important' }}>
               <Breadcrumbs
                 separator={<NavigateNextIcon fontSize="small" />}
                 sx={{ color: 'primary.contrastText' }}

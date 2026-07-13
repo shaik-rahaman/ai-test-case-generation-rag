@@ -1202,24 +1202,24 @@ ${JSON.stringify(essentialTestCases, null, 2)}
           }
         </Typography>
         
-        <TableContainer component={Paper} sx={{ maxHeight: 700, overflow: 'auto', border: '1px solid #e0e0e0' }}>
+        <TableContainer component={Paper} sx={{ maxHeight: 700, overflow: 'auto', border: '1px solid', borderColor: 'divider' }}>
           <Table stickyHeader size="small">
             <TableHead>
-              <TableRow sx={{ bgcolor: isReference ? '#e3f2fd' : '#e8f5e9' }}>
-                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? '#1976d2' : '#388e3c', color: 'white', width: 100 }}>Test Case ID</TableCell>
-                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? '#1976d2' : '#388e3c', color: 'white', width: 250 }}>Title</TableCell>
-                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? '#1976d2' : '#388e3c', color: 'white', width: 120 }}>Module</TableCell>
-                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? '#1976d2' : '#388e3c', color: 'white', width: 80 }}>Priority</TableCell>
-                {!isReference && <TableCell sx={{ fontWeight: 'bold', bgcolor: '#388e3c', color: 'white', width: 100 }}>Test Type</TableCell>}
-                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? '#1976d2' : '#388e3c', color: 'white', width: 150 }}>Preconditions</TableCell>
-                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? '#1976d2' : '#388e3c', color: 'white', width: 300 }}>Test Steps</TableCell>
-                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? '#1976d2' : '#388e3c', color: 'white', width: 250 }}>Expected Results</TableCell>
-                {isReference && <TableCell sx={{ fontWeight: 'bold', bgcolor: '#1976d2', color: 'white', width: 80 }}>Score</TableCell>}
+              <TableRow sx={{ bgcolor: isReference ? 'info.light' : 'success.light' }}>
+                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? 'primary.main' : 'success.main', color: 'common.white', width: 100 }}>Test Case ID</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? 'primary.main' : 'success.main', color: 'common.white', width: 250 }}>Title</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? 'primary.main' : 'success.main', color: 'common.white', width: 120 }}>Module</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? 'primary.main' : 'success.main', color: 'common.white', width: 80 }}>Priority</TableCell>
+                {!isReference && <TableCell sx={{ fontWeight: 'bold', bgcolor: 'success.main', color: 'common.white', width: 100 }}>Test Type</TableCell>}
+                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? 'primary.main' : 'success.main', color: 'common.white', width: 150 }}>Preconditions</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? 'primary.main' : 'success.main', color: 'common.white', width: 300 }}>Test Steps</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', bgcolor: isReference ? 'primary.main' : 'success.main', color: 'common.white', width: 250 }}>Expected Results</TableCell>
+                {isReference && <TableCell sx={{ fontWeight: 'bold', bgcolor: 'primary.main', color: 'common.white', width: 80 }}>Score</TableCell>}
               </TableRow>
             </TableHead>
             <TableBody>
               {testCases.map((testCase, index) => (
-                <TableRow key={index} hover sx={{ '&:nth-of-type(odd)': { bgcolor: isReference ? '#f5f5f5' : '#fafafa' } }}>
+                <TableRow key={index} hover sx={{ '&:nth-of-type(odd)': { bgcolor: isReference ? 'grey.100' : 'grey.50' } }}>
                   <TableCell sx={{ fontFamily: 'monospace', color: 'primary.main', fontWeight: 'bold', fontSize: '0.9rem' }}>
                     {testCase.testCaseId || testCase.id || `TC_${index + 1}`}
                   </TableCell>
@@ -1253,7 +1253,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                       // Early exit if no testSteps
                       if (!testCase.testSteps || testCase.testSteps === 'N/A') {
                         return (
-                          <Typography variant="caption" sx={{ color: '#d32f2f', fontStyle: 'italic', fontWeight: 500 }}>
+                          <Typography variant="caption" sx={{ color: 'error.main', fontStyle: 'italic', fontWeight: 500 }}>
                             ⚠️ No steps defined
                           </Typography>
                         );
@@ -1296,7 +1296,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                       
                       // If no steps available
                       return (
-                        <Typography variant="caption" sx={{ color: '#d32f2f', fontStyle: 'italic', fontWeight: 500 }}>
+                        <Typography variant="caption" sx={{ color: 'error.main', fontStyle: 'italic', fontWeight: 500 }}>
                           ⚠️ No steps defined
                         </Typography>
                       );
@@ -1322,7 +1322,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
         </TableContainer>
         
         {/* Summary Statistics */}
-        <Box sx={{ mt: 2, p: 2, bgcolor: isReference ? '#e3f2fd' : '#e8f5e9', borderRadius: 1 }}>
+        <Box sx={{ mt: 2, p: 2, bgcolor: isReference ? 'info.light' : 'success.light', borderRadius: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <Typography variant="body2">
@@ -1675,7 +1675,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
               {/* Prompt Engineering Results - Display in RAG Pipeline Format */}
               {testResult && (
                 <Grid item xs={12}>
-                  <Card sx={{ bgcolor: testResult.error ? '#ffebee' : '#e8f5e9' }}>
+                  <Card sx={{ bgcolor: testResult.error ? 'error.light' : 'success.light' }}>
                     <CardContent>
                       {/* Header */}
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -1728,7 +1728,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
                       {/* Pipeline Steps Summary */}
                       {testResult.pipelineSteps && (
-                        <Card sx={{ mb: 2, bgcolor: '#e8f5e9' }}>
+                        <Card sx={{ mb: 2, bgcolor: 'success.light' }}>
                           <CardContent>
                             <Typography variant="h6" gutterBottom sx={{ color: 'success.main' }}>
                               📋 Generation Pipeline Completed
@@ -1773,7 +1773,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                         <>
                           {/* Analysis Summary */}
                           {testResult.response?.analysis && (
-                            <Card sx={{ mb: 3, bgcolor: '#fff9c4' }}>
+                            <Card sx={{ mb: 3, bgcolor: 'warning.light' }}>
                               <CardContent>
                                 <Typography variant="h6" gutterBottom>
                                   🎯 Analysis & Gaps
@@ -1813,7 +1813,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
                           {/* Rationale Section */}
                           {testResult.response?.rationale && (
-                            <Card sx={{ mt: 3, bgcolor: '#f3e5f5' }}>
+                            <Card sx={{ mt: 3, bgcolor: 'primary.light' }}>
                               <CardContent>
                                 <Typography variant="h6" gutterBottom>
                                   💡 Generation Rationale
@@ -1867,7 +1867,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
               {/* Complete Pipeline Results - NEW IMPROVED UI */}
               {llmRagResult && !showQualityComparison && (
                 <Grid item xs={12}>
-                  <Card sx={{ bgcolor: llmRagResult.error ? '#ffebee' : '#f3e5f5' }}>
+                  <Card sx={{ bgcolor: llmRagResult.error ? 'error.light' : 'primary.light' }}>
                     <CardContent>
                       {/* Header */}
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -1939,7 +1939,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
                       {/* Pipeline Steps Summary */}
                       {llmRagResult.pipelineSteps && (
-                        <Card sx={{ mb: 2, bgcolor: '#e8f5e9' }}>
+                        <Card sx={{ mb: 2, bgcolor: 'success.light' }}>
                           <CardContent>
                             <Typography variant="h6" gutterBottom sx={{ color: 'success.main' }}>
                               📋 10-Step Pipeline Completed
@@ -2055,7 +2055,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                             <>
                               {/* Analysis Summary */}
                               {llmRagResult.response?.analysis && (
-                                <Card sx={{ mb: 3, bgcolor: '#fff9c4' }}>
+                                <Card sx={{ mb: 3, bgcolor: 'warning.light' }}>
                                   <CardContent>
                                     <Typography variant="h6" gutterBottom>
                                       🎯 Analysis & Gaps
@@ -2108,7 +2108,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
                               {/* Rationale Section */}
                               {llmRagResult.response?.rationale && (
-                                <Card sx={{ mt: 3, bgcolor: '#f3e5f5' }}>
+                                <Card sx={{ mt: 3, bgcolor: 'primary.light' }}>
                                   <CardContent>
                                     <Typography variant="h6" gutterBottom>
                                       💡 Generation Rationale
@@ -2160,7 +2160,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
               {/* Quality Comparison View */}
               {showQualityComparison && testResult && llmRagResult && (
                 <Grid item xs={12}>
-                  <Card sx={{ bgcolor: '#fff3e0' }}>
+                  <Card sx={{ bgcolor: 'warning.light' }}>
                     <CardContent>
                       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <CompareIcon /> Three-Way Comparison: Prompt Engineering vs RAG vs LLM+RAG
@@ -2170,7 +2170,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                       <Grid container spacing={2}>
                         {/* Prompt Engineering Column */}
                         <Grid item xs={12} md={4}>
-                          <Card sx={{ bgcolor: '#e8f5e9', height: '100%' }}>
+                          <Card sx={{ bgcolor: 'success.light', height: '100%' }}>
                             <CardContent>
                               <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                 <AiIcon color="success" /> 1. Prompt Engineering
@@ -2196,7 +2196,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                               </Box>
                               
                               {!testResult.error && testResult.tokens && (
-                                <Box sx={{ mt: 2, p: 1, bgcolor: '#c8e6c9', borderRadius: 1 }}>
+                                <Box sx={{ mt: 2, p: 1, bgcolor: 'success.light', borderRadius: 1 }}>
                                   <Typography variant="caption" display="block">
                                     <strong>Tokens:</strong> {testResult.tokens.total}
                                   </Typography>
@@ -2214,7 +2214,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
                         {/* LLM + RAG Context Column */}
                         <Grid item xs={12} md={4}>
-                          <Card sx={{ bgcolor: '#f3e5f5', height: '100%' }}>
+                          <Card sx={{ bgcolor: 'primary.light', height: '100%' }}>
                             <CardContent>
                               <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                 <AiIcon color="secondary" /> 2. LLM + RAG Context
@@ -2240,7 +2240,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                               </Box>
                               
                               {!llmRagResult.error && llmRagResult.tokens && (
-                                <Box sx={{ mt: 2, p: 1, bgcolor: '#e1bee7', borderRadius: 1 }}>
+                                <Box sx={{ mt: 2, p: 1, bgcolor: 'primary.light', borderRadius: 1 }}>
                                   <Typography variant="caption" display="block">
                                     <strong>Tokens:</strong> {llmRagResult.tokens.total}
                                   </Typography>
@@ -2258,7 +2258,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
                         {/* Enhanced Quality Analysis */}
                         <Grid item xs={12}>
-                          <Card sx={{ bgcolor: '#fff9c4' }}>
+                          <Card sx={{ bgcolor: 'warning.light' }}>
                             <CardContent>
                               <Typography variant="h6" gutterBottom>
                                 📊 Comprehensive Quality & Performance Analysis
@@ -2270,7 +2270,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                   <Typography variant="subtitle2" color="text.secondary" gutterBottom>
                                     💰 Cost Analysis
                                   </Typography>
-                                  <Box sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 1 }}>
+                                  <Box sx={{ bgcolor: 'background.paper', p: 2, borderRadius: 1, border: '1px solid', borderColor: 'divider' }}>
                                     <Typography variant="body2">
                                       <strong>Prompt Engineering:</strong> ${testResult?.cost?.total || '0.000000'}<br/>
                                       <strong>Full RAG Pipeline:</strong> ${llmRagResult?.cost?.total || '0.000000'}
@@ -2284,7 +2284,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                   <Typography variant="subtitle2" color="text.secondary" gutterBottom>
                                     🔢 Token Usage
                                   </Typography>
-                                  <Box sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 1 }}>
+                                  <Box sx={{ bgcolor: 'background.paper', p: 2, borderRadius: 1, border: '1px solid', borderColor: 'divider' }}>
                                     <Typography variant="body2">
                                       <strong>PE:</strong> {testResult?.tokens?.total || 0} tokens<br/>
                                       <strong>Pipeline:</strong> {llmRagResult?.tokens?.total || 0} tokens
@@ -2298,7 +2298,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                   <Typography variant="subtitle2" color="text.secondary" gutterBottom>
                                     📊 Output Quality
                                   </Typography>
-                                  <Box sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 1 }}>
+                                  <Box sx={{ bgcolor: 'background.paper', p: 2, borderRadius: 1, border: '1px solid', borderColor: 'divider' }}>
                                     <Typography variant="body2">
                                       <strong>PE:</strong> Analysis + Gaps<br/>
                                       <strong>Pipeline:</strong> New Test Cases
@@ -2314,7 +2314,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                               
                               <Grid container spacing={2}>
                                 <Grid item xs={12} md={4}>
-                                  <Card sx={{ bgcolor: '#e8f5e9', height: '100%' }}>
+                                  <Card sx={{ bgcolor: 'success.light', height: '100%' }}>
                                     <CardContent>
                                       <Typography variant="h6" color="success.main" gutterBottom>
                                         1️⃣ Prompt Engineering
@@ -2334,7 +2334,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                 </Grid>
                                 
                                 <Grid item xs={12} md={4}>
-                                  <Card sx={{ bgcolor: '#e3f2fd', height: '100%' }}>
+                                  <Card sx={{ bgcolor: 'info.light', height: '100%' }}>
                                     <CardContent>
                                       <Typography variant="h6" color="primary.main" gutterBottom>
                                         2️⃣ RAG (Standard)
@@ -2354,7 +2354,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                 </Grid>
                                 
                                 <Grid item xs={12} md={4}>
-                                  <Card sx={{ bgcolor: '#f3e5f5', height: '100%' }}>
+                                  <Card sx={{ bgcolor: 'primary.light', height: '100%' }}>
                                     <CardContent>
                                       <Typography variant="h6" color="secondary.main" gutterBottom>
                                         3️⃣ Full RAG Pipeline
@@ -2403,7 +2403,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
               {/* Quality Comparison View */}
               {showQualityComparison && testResult && llmRagResult && (
                 <Grid item xs={12}>
-                  <Card sx={{ bgcolor: '#fff3e0', border: '2px solid #ff9800' }}>
+                  <Card sx={{ bgcolor: 'warning.light', border: '2px solid', borderColor: 'warning.main' }}>
                     <CardContent>
                       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         🏆 Test Case Quality Analysis: Prompt Engineering vs Full RAG Pipeline
@@ -2413,7 +2413,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                       <Grid container spacing={3}>
                         {/* Prompt Engineering Quality */}
                         <Grid item xs={12} md={6}>
-                          <Card sx={{ bgcolor: '#e8f5e9', height: '100%' }}>
+                          <Card sx={{ bgcolor: 'success.light', height: '100%' }}>
                             <CardContent>
                               <Typography variant="h6" color="success.main" gutterBottom>
                                 📝 Prompt Engineering Approach
@@ -2431,7 +2431,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                               </Typography>
                               
                               <Typography variant="subtitle2" gutterBottom>Quality Metrics:</Typography>
-                              <Box sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 1, fontSize: '0.85rem' }}>
+                              <Box sx={{ bgcolor: 'background.paper', p: 2, borderRadius: 1, fontSize: '0.85rem', border: '1px solid', borderColor: 'divider' }}>
                                 ✅ Structured JSON output<br/>
                                 ✅ Fast response time<br/>
                                 ✅ Consistent format<br/>
@@ -2440,7 +2440,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                 ❌ Sample data dependency
                               </Box>
                               
-                              <Box sx={{ mt: 2, p: 1, bgcolor: '#c8e6c9', borderRadius: 1 }}>
+                              <Box sx={{ mt: 2, p: 1, bgcolor: 'success.light', borderRadius: 1 }}>
                                 <Typography variant="caption">
                                   <strong>Cost:</strong> ${testResult.cost?.total || '0.000000'}<br/>
                                   <strong>Tokens:</strong> {testResult.tokens?.total || 0}
@@ -2452,7 +2452,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                         
                         {/* RAG Pipeline Quality */}
                         <Grid item xs={12} md={6}>
-                          <Card sx={{ bgcolor: '#f3e5f5', height: '100%' }}>
+                          <Card sx={{ bgcolor: 'primary.light', height: '100%' }}>
                             <CardContent>
                               <Typography variant="h6" color="secondary.main" gutterBottom>
                                 🎯 Full RAG Pipeline Approach
@@ -2470,7 +2470,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                               </Typography>
                               
                               <Typography variant="subtitle2" gutterBottom>Quality Metrics:</Typography>
-                              <Box sx={{ bgcolor: '#f5f5f5', p: 2, borderRadius: 1, fontSize: '0.85rem' }}>
+                              <Box sx={{ bgcolor: 'background.paper', p: 2, borderRadius: 1, fontSize: '0.85rem', border: '1px solid', borderColor: 'divider' }}>
                                 ✅ Real database search ({llmRagResult.searchResults || 0} results)<br/>
                                 ✅ Query preprocessing applied<br/>
                                 ✅ Deduplication: {llmRagResult.dedupData?.stats?.duplicatesRemoved || 0} removed<br/>
@@ -2480,7 +2480,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                 ❌ Higher cost and complexity
                               </Box>
                               
-                              <Box sx={{ mt: 2, p: 1, bgcolor: '#e1bee7', borderRadius: 1 }}>
+                              <Box sx={{ mt: 2, p: 1, bgcolor: 'primary.light', borderRadius: 1 }}>
                                 <Typography variant="caption">
                                   <strong>Generation Cost:</strong> ${llmRagResult.cost?.total || '0.000000'}<br/>
                                   <strong>RAG Cost:</strong> ${llmRagResult.ragCost?.total || '0.000000'}<br/>
@@ -2493,7 +2493,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                         
                         {/* Winner Analysis */}
                         <Grid item xs={12}>
-                          <Card sx={{ bgcolor: '#e8f5e9', border: '2px solid #4caf50' }}>
+                          <Card sx={{ bgcolor: 'success.light', border: '2px solid', borderColor: 'success.main' }}>
                             <CardContent>
                               <Typography variant="h6" gutterBottom>
                                 🏆 Quality Winner: Full RAG Pipeline
@@ -2559,7 +2559,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
             {/* Metrics Evaluation Controls */}
             {(llmRagResult || testResult) && (
-              <Box sx={{ mb: 3, p: 2, bgcolor: '#e3f2fd', borderRadius: 1 }}>
+              <Box sx={{ mb: 3, p: 2, bgcolor: 'info.light', borderRadius: 1 }}>
                 <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'flex-end' }}>
                   <Box sx={{ flex: 1, minWidth: 250 }}>
                     <Typography variant="body2" sx={{ mb: 1 }}>
@@ -2577,7 +2577,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                         
                         {/* RAG Pipeline: Reference Test Cases */}
                         {llmRagResult && llmRagResult.existingTestCases && llmRagResult.existingTestCases.length > 0 && (
-                          <ListSubheader sx={{ fontWeight: 'bold', color: '#1976d2' }}>
+                          <ListSubheader sx={{ fontWeight: 'bold', color: 'primary.main' }}>
                             Reference Test Cases ({llmRagResult.existingTestCases.length})
                           </ListSubheader>
                         )}
@@ -2594,7 +2594,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                         
                         {/* RAG Pipeline: Generated Test Cases */}
                         {llmRagResult && llmRagResult.response?.newTestCases && llmRagResult.response.newTestCases.length > 0 && (
-                          <ListSubheader sx={{ fontWeight: 'bold', color: '#388e3c' }}>
+                          <ListSubheader sx={{ fontWeight: 'bold', color: 'success.main' }}>
                             Generated Test Cases - RAG Pipeline ({llmRagResult.response.newTestCases.length})
                           </ListSubheader>
                         )}
@@ -2611,7 +2611,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
                         {/* Prompt Engineering: Generated Test Cases */}
                         {testResult && testResult.response?.newTestCases && testResult.response.newTestCases.length > 0 && (
-                          <ListSubheader sx={{ fontWeight: 'bold', color: '#ff9800' }}>
+                          <ListSubheader sx={{ fontWeight: 'bold', color: 'warning.main' }}>
                             Generated Test Cases - Prompt Engineering ({testResult.response.newTestCases.length})
                           </ListSubheader>
                         )}
@@ -2667,7 +2667,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
 
             {/* Metrics Results Display */}
             {metricsResult && !metricsResult.error && (
-              <Card sx={{ mb: 3, bgcolor: '#f3e5f5' }}>
+              <Card sx={{ mb: 3, bgcolor: 'primary.light' }}>
                 <CardContent>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                     <Typography variant="h6">
@@ -2690,13 +2690,13 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                         // For hallucination: invert score so 0 becomes 1.0 (100% = no hallucination)
                         displayScore = 1 - result.score;
                         // Now higher score is better: 1.0 = green (no hallucination), low = red (hallucinating)
-                        bgColor = displayScore >= 0.75 ? '#e8f5e9' : displayScore >= 0.5 ? '#fff9c4' : '#ffebee';
-                        borderColor = displayScore >= 0.75 ? '#4caf50' : displayScore >= 0.5 ? '#fbc02d' : '#f44336';
+                        bgColor = displayScore >= 0.75 ? 'success.light' : displayScore >= 0.5 ? 'warning.light' : 'error.light';
+                        borderColor = displayScore >= 0.75 ? 'success.main' : displayScore >= 0.5 ? 'warning.main' : 'error.main';
                         chipColor = displayScore >= 0.75 ? 'success' : displayScore >= 0.5 ? 'warning' : 'error';
                       } else {
                         // For other metrics: higher score is better
-                        bgColor = result.score >= 0.75 ? '#e8f5e9' : result.score >= 0.5 ? '#fff9c4' : '#ffebee';
-                        borderColor = result.score >= 0.75 ? '#4caf50' : result.score >= 0.5 ? '#fbc02d' : '#f44336';
+                        bgColor = result.score >= 0.75 ? 'success.light' : result.score >= 0.5 ? 'warning.light' : 'error.light';
+                        borderColor = result.score >= 0.75 ? 'success.main' : result.score >= 0.5 ? 'warning.main' : 'error.main';
                         chipColor = result.score >= 0.75 ? 'success' : result.score >= 0.5 ? 'warning' : 'error';
                       }
 
@@ -2731,7 +2731,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                       mb: 1,
                                       height: 8,
                                       borderRadius: 4,
-                                      backgroundColor: '#e0e0e0',
+                                      backgroundColor: 'grey.300',
                                       '& .MuiLinearProgress-bar': {
                                         backgroundColor: borderColor
                                       }
@@ -2739,7 +2739,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                                   />
                                   <Typography variant="caption" color="text.secondary">
                                     {result.explanation && (
-                                      <Box sx={{ mt: 1, p: 1, bgcolor: 'rgba(0,0,0,0.05)', borderRadius: 1 }}>
+                                      <Box sx={{ mt: 1, p: 1, bgcolor: 'action.hover', borderRadius: 1 }}>
                                         {result.explanation}
                                       </Box>
                                     )}
@@ -2760,7 +2760,7 @@ ${JSON.stringify(essentialTestCases, null, 2)}
                   </Grid>
 
                   {/* Summary Section */}
-                  <Box sx={{ mt: 3, p: 2, bgcolor: 'rgba(0,0,0,0.05)', borderRadius: 1 }}>
+                  <Box sx={{ mt: 3, p: 2, bgcolor: 'action.hover', borderRadius: 1 }}>
                     <Typography variant="subtitle2" gutterBottom>
                       📈 Quality Summary
                     </Typography>

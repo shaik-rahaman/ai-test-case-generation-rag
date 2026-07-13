@@ -488,7 +488,7 @@ function SummarizationDedup() {
               {dedupResults && (
                 <>
                   {/* Stats */}
-                  <Card sx={{ mb: 3, bgcolor: '#e8f5e9' }}>
+                  <Card sx={{ mb: 3, bgcolor: 'success.light' }}>
                     <CardContent>
                       <Typography variant="h6" gutterBottom>
                         Deduplication Statistics
@@ -598,7 +598,7 @@ function SummarizationDedup() {
                       <Grid container spacing={2}>
                         {dedupResults.duplicates.map((result, idx) => (
                           <Grid item xs={12} key={idx}>
-                            <Card variant="outlined" sx={{ bgcolor: '#ffebee' }}>
+                            <Card variant="outlined" sx={{ bgcolor: 'error.light' }}>
                               <CardContent>
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                                   <Typography variant="h6" color="error">
@@ -636,7 +636,7 @@ function SummarizationDedup() {
               {summary && (
                 <>
                   {/* Summary Card */}
-                  <Card sx={{ mb: 3, bgcolor: '#e3f2fd' }}>
+                  <Card sx={{ mb: 3, bgcolor: 'info.light' }}>
                     <CardContent>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
                         <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -660,7 +660,7 @@ function SummarizationDedup() {
                   </Card>
 
                   {/* Token & Cost Info */}
-                  <Card sx={{ bgcolor: '#fff3e0' }}>
+                  <Card sx={{ bgcolor: 'warning.light' }}>
                     <CardContent>
                       <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <TokenIcon /> Token Usage & Cost

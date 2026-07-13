@@ -258,7 +258,7 @@ function QueryPreprocessing() {
               </Typography>
 
               {/* Original */}
-              <Card sx={{ mb: 2, bgcolor: '#fff3e0' }}>
+              <Card sx={{ mb: 2, bgcolor: 'warning.light' }}>
                 <CardContent>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                     <Typography variant="subtitle2" color="text.secondary">
@@ -272,7 +272,7 @@ function QueryPreprocessing() {
               </Card>
 
               {/* Step 1: Normalization */}
-              <Card sx={{ mb: 2, bgcolor: '#e3f2fd' }}>
+              <Card sx={{ mb: 2, bgcolor: 'info.light' }}>
                 <CardContent>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                     <Typography variant="subtitle2" color="text.secondary">
@@ -296,7 +296,7 @@ function QueryPreprocessing() {
               </Card>
 
               {/* Step 2: Abbreviation Expansion */}
-              <Card sx={{ mb: 2, bgcolor: '#e8f5e9' }}>
+              <Card sx={{ mb: 2, bgcolor: 'success.light' }}>
                 <CardContent>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                     <Typography variant="subtitle2" color="text.secondary">
@@ -333,7 +333,7 @@ function QueryPreprocessing() {
               </Card>
 
               {/* Step 3: Synonym Expansion */}
-              <Card sx={{ bgcolor: '#f3e5f5' }}>
+              <Card sx={{ bgcolor: 'primary.light' }}>
                 <CardContent>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                     <Typography variant="subtitle2" color="text.secondary">
@@ -350,7 +350,7 @@ function QueryPreprocessing() {
                   </Typography>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     {preprocessResult.synonymExpanded?.slice(0, 3).map((variation, idx) => (
-                      <Box key={idx} sx={{ p: 1, bgcolor: 'background.paper', borderRadius: 1, border: '1px solid #e0e0e0' }}>
+                      <Box key={idx} sx={{ p: 1, bgcolor: 'background.paper', borderRadius: 1, border: '1px solid', borderColor: 'divider' }}>
                         <Typography variant="body2" sx={{ fontFamily: 'monospace' }}>
                           {idx + 1}. "{variation}"
                         </Typography>
@@ -366,7 +366,7 @@ function QueryPreprocessing() {
               </Card>
 
               {/* Metadata */}
-              <Box sx={{ mt: 3, p: 2, bgcolor: '#fafafa', borderRadius: 1 }}>
+              <Box sx={{ mt: 3, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
                 <Typography variant="subtitle2" gutterBottom>
                   Processing Metadata
                 </Typography>
@@ -447,7 +447,7 @@ function QueryPreprocessing() {
                 </Typography>
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={6}>
-                    <Paper sx={{ p: 2, bgcolor: '#fff3e0' }}>
+                    <Paper sx={{ p: 2, bgcolor: 'warning.light' }}>
                       <Typography variant="caption" color="text.secondary">
                         BEFORE (with abbreviations)
                       </Typography>
@@ -457,7 +457,7 @@ function QueryPreprocessing() {
                     </Paper>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <Paper sx={{ p: 2, bgcolor: '#e8f5e9' }}>
+                    <Paper sx={{ p: 2, bgcolor: 'success.light' }}>
                       <Typography variant="caption" color="text.secondary">
                         AFTER (expanded)
                       </Typography>
@@ -487,8 +487,9 @@ function QueryPreprocessing() {
                     <Paper 
                       sx={{ 
                         p: 2, 
-                        bgcolor: idx === 0 ? '#e8f5e9' : 'background.paper',
-                        border: idx === 0 ? '2px solid #4caf50' : '1px solid #e0e0e0'
+                        bgcolor: idx === 0 ? 'success.light' : 'background.paper',
+                        border: idx === 0 ? '2px solid' : '1px solid',
+                        borderColor: idx === 0 ? 'success.main' : 'divider'
                       }}
                     >
                       <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
@@ -649,7 +650,7 @@ function QueryPreprocessing() {
       )}
 
       {/* Info Section */}
-      <Paper elevation={1} sx={{ p: 2, bgcolor: '#f5f5f5' }}>
+      <Paper elevation={1} sx={{ p: 2, bgcolor: 'grey.100' }}>
         <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
           <InfoIcon color="primary" />
           <Box>
